@@ -11,10 +11,17 @@
 
 .gameboard__row {
   display: flex;
+  flex-direction: row;
 }
 
 .word {
   border: 1px solid #3a3a3c;
-  width: 5em;
-  height: 5em;
+  width: 2em;
+  height: 2em;
+  margin: 0.2em;
+  font-size: 26px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
