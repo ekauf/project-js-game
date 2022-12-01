@@ -12,7 +12,7 @@ const inputLetter = (letter) => {
     const currentBox = currentRow.children[column];
     currentBox.innerText += letter;
     column++;
-    console.log(currentBox);
+    // console.log(currentBox);
   }
 };
 
@@ -24,7 +24,7 @@ const checkWord = () => {
   const letterArray = currentRowLettersArray.map((div) => {
     return div.innerText;
   });
-  console.log(letterArray);
+  //   console.log(letterArray);
 
   letterArray.forEach((letter, index) => {
     const indexOfWordAnswer = wordAnswer.indexOf(letter);
@@ -48,13 +48,31 @@ const clickEnter = () => {
   }
 };
 
+const clickDelete = () => {
+  //   const currentRow = gameboardRow[row];
+  //   const currentRowLetters = currentRow.children;
+
+  //   for (let i = currentRowLetters.length - 1; i > 0; i--) {
+  //     if (currentRowLetters[i].innerText !== "") {
+  //       currentRowLetters[i].innerText == "";
+  //       column--;
+  //       break;
+  // }
+  //   }
+  const currentRow = gameboardRow[row];
+  const currentBox = currentRow.children[column];
+
+  currentBox.innerHTML = "";
+  column--;
+  console.log(currentBox);
+};
+
 const inputKey = (event) => {
   const key = event.target.innerText;
   if (key === "ENTER") {
     clickEnter();
-    // row++;
-  } else if (key === "&larr;") {
-    // backspace
+  } else if (key === "DEL") {
+    clickDelete();
   } else {
     inputLetter(key);
   }
