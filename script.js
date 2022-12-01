@@ -26,20 +26,18 @@ const checkWord = () => {
   });
   console.log(letterArray);
 
-  letterArray.forEach((letter) => {
+  letterArray.forEach((letter, index) => {
     const indexOfWordAnswer = wordAnswer.indexOf(letter);
-    console.log(indexOfWordAnswer);
+    // console.log(indexOfWordAnswer);
+    // console.log(wordAnswer[index]);
+    if (indexOfWordAnswer === index) {
+      currentRowLetters[index].classList.add("word--green");
+    } else if (indexOfWordAnswer > 0) {
+      currentRowLetters[index].classList.add("word--yellow");
+    } else {
+      currentRowLetters[index].classList.add("word--grey");
+    }
   });
-
-  //   if (currentRowLetters === wordAnswer.indexOf(wordAnswer)) {
-  //     alert("Correct");
-  //   } else {
-  //     alert("Incorrect");
-  //   }
-  //   currentRowLetters.forEach((letter) => {
-  //     const indexOfWordAnswer = wordAnswer.indexOf(letter);
-  //     console.log(indexOfWordAnswer);
-  //   });
 };
 
 const clickEnter = () => {
