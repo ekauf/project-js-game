@@ -45,6 +45,8 @@ const clickEnter = () => {
     alert("Not enough letters");
   } else {
     checkWord();
+    row += 1;
+    column = 0;
   }
 };
 
