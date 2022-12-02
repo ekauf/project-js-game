@@ -2,12 +2,14 @@ const letterKeys = document.querySelectorAll("button");
 const gameboardRow = document.querySelectorAll(".gameboard__row");
 const scoreBoard = document.querySelector(".scoreBoard");
 
-import { wordsArr } from "./wordsArr";
+import { wordsArr } from "./wordsArr.js";
 
 const capitalsWordsArr = wordsArr.map((word) => word.toUpperCase());
-console.log(capitalsWordsArr);
 
-const wordAnswer = "SOUND";
+const wordAnswer =
+  capitalsWordsArr[Math.floor(Math.random() * capitalsWordsArr.length)];
+
+console.log(wordAnswer);
 
 let row = 0;
 let column = 0;
@@ -80,7 +82,6 @@ const clickDelete = () => {
 
   currentBox.innerHTML = "";
   column--;
-  console.log(currentBox);
 };
 
 const inputKey = (event) => {
