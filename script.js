@@ -2,6 +2,11 @@ const letterKeys = document.querySelectorAll("button");
 const gameboardRow = document.querySelectorAll(".gameboard__row");
 const scoreBoard = document.querySelector(".scoreBoard");
 
+import { wordsArr } from "./wordsArr";
+
+const capitalsWordsArr = wordsArr.map((word) => word.toUpperCase());
+console.log(capitalsWordsArr);
+
 const wordAnswer = "SOUND";
 
 let row = 0;
