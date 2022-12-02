@@ -1,10 +1,13 @@
 const letterKeys = document.querySelectorAll("button");
 const gameboardRow = document.querySelectorAll(".gameboard__row");
+const scoreBoard = document.querySelector(".scoreBoard");
 
 const wordAnswer = "SOUND";
 
 let row = 0;
 let column = 0;
+
+let score = 0;
 
 const inputLetter = (letter) => {
   if (column < 5) {
@@ -20,17 +23,18 @@ const checkWord = () => {
   const currentRow = gameboardRow[row];
   const currentRowLetters = currentRow.children;
 
+  let nCorrectLetters = 0;
+
   const currentRowLettersArray = Array.from(currentRowLetters);
   const letterArray = currentRowLettersArray.map((div) => {
     return div.innerText;
   });
-  //   console.log(letterArray);
 
   letterArray.forEach((letter, index) => {
     const indexOfWordAnswer = wordAnswer.indexOf(letter);
-    // console.log(indexOfWordAnswer);
-    // console.log(wordAnswer[index]);
+
     if (indexOfWordAnswer === index) {
+      nCorrectLetters += 1;
       currentRowLetters[index].classList.add("word--green");
     } else if (indexOfWordAnswer > 0) {
       currentRowLetters[index].classList.add("word--yellow");
@@ -38,6 +42,11 @@ const checkWord = () => {
       currentRowLetters[index].classList.add("word--grey");
     }
   });
+
+  if (nCorrectLetters === 5) {
+    alert("CORRECT GUESS");
+    score++, (scoreBoard.innerHTML = `<p>Score: ${score}</p>`);
+  }
 };
 
 const clickEnter = () => {
