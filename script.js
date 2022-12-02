@@ -9,12 +9,12 @@ const capitalsWordsArr = wordsArr.map((word) => word.toUpperCase());
 const wordAnswer =
   capitalsWordsArr[Math.floor(Math.random() * capitalsWordsArr.length)];
 
-console.log(wordAnswer);
+// console.log(wordAnswer);
 
 let row = 0;
 let column = 0;
-
 let score = 0;
+let gameOver = false;
 
 const inputLetter = (letter) => {
   if (column < 5) {
@@ -22,7 +22,6 @@ const inputLetter = (letter) => {
     const currentBox = currentRow.children[column];
     currentBox.innerText += letter;
     column++;
-    // console.log(currentBox);
   }
 };
 
@@ -53,6 +52,9 @@ const checkWord = () => {
   if (nCorrectLetters === 5) {
     alert("CORRECT GUESS");
     score++, (scoreBoard.innerHTML = `<p>Score: ${score}</p>`);
+  } else if (row === 5) {
+    gameOver = true;
+    alert("You failed. Better luck next time kid. Your score was " + score);
   }
 };
 
@@ -67,16 +69,6 @@ const clickEnter = () => {
 };
 
 const clickDelete = () => {
-  //   const currentRow = gameboardRow[row];
-  //   const currentRowLetters = currentRow.children;
-
-  //   for (let i = currentRowLetters.length - 1; i > 0; i--) {
-  //     if (currentRowLetters[i].innerText !== "") {
-  //       currentRowLetters[i].innerText == "";
-  //       column--;
-  //       break;
-  // }
-  //   }
   const currentRow = gameboardRow[row];
   const currentBox = currentRow.children[column];
 
